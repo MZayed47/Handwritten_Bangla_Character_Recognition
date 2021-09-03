@@ -58,6 +58,9 @@ bclfr.add(Dense(units=100, kernel_initializer='uniform', activation='relu'))
 
 bclfr.add(Dense(units=10, kernel_initializer='uniform', activation='sigmoid'))
 
+
+# Compile
+
 bclfr.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 
@@ -68,11 +71,9 @@ bclfr.fit(x_trainN, y_trainN, batch_size=10, epochs=100)
 
 y_pred = bclfr.predict(x_testN)
 
+test_eval = bclfr.evaluate(x_testN, y_testN, verbose=0)
 
-
-
-
-
-
+print('Test loss:', test_eval[0])
+print('Test accuracy:', 100*test_eval[1])
 
 
